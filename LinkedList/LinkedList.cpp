@@ -100,7 +100,7 @@ template <typename T> void LinkedList<T>::deleteNodefromLast() {
         tmp = tmp->getNext();
     }
     delete tmp->getNext();
-    tmp->setNext(0)
+    tmp->setNext(0);
     size--;
 }
 template <typename T> void LinkedList<T>::deleteNodeAt(int index) {
@@ -110,8 +110,8 @@ template <typename T> void LinkedList<T>::deleteNodeAt(int index) {
         for(int i = 1; i < index - 1; i++) {
             tmp = tmp->getNext();
         }
-        tmp2 = tmp1->getNext()->getNext()
-        delete tmp->getNext()
+        tmp2 = tmp1->getNext()->getNext();
+        delete tmp->getNext();
         tmp1->setNext(tmp2);
         size--;
     }
