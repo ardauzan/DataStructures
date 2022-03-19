@@ -27,6 +27,8 @@ template <typename T> class LinkedList {
         int getSize() const;
         virtual void setSize(int);
         node* getHead() const;
-        virtual void addNode(T);
-        virtual void deleteNode(int);
+        virtual void addNodeToLast(T);
+        virtual void addNodeAt(int, T);
+        virtual void deleteNodefromLast();
+        virtual void deleteNodeAt(int);
 };
