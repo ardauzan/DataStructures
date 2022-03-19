@@ -95,13 +95,18 @@ template <typename T> void LinkedList<T>::addNodeAt(int index, T payload) {
     }
 }
 template <typename T> void LinkedList<T>::deleteNodefromLast() {
-    node * tmp = head;
-    for(int i = 1; i < size - 1; i++) {
-        tmp = tmp->getNext();
+    if (size > 0) {
+        node * tmp = head;
+        for(int i = 1; i < size - 1; i++) {
+            tmp = tmp->getNext();
+        }
+        delete tmp->getNext();
+        tmp->setNext(0);
+        size--;
+    } else {
+        head->setPayload((T)0);
     }
-    delete tmp->getNext();
-    tmp->setNext(0);
-    size--;
+    
 }
 template <typename T> void LinkedList<T>::deleteNodeAt(int index) {
     if (index <= size && index >= 0) {
