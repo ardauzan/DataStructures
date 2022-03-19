@@ -109,7 +109,7 @@ template <typename T> void LinkedList<T>::deleteNodefromLast() {
     
 }
 template <typename T> void LinkedList<T>::deleteNodeAt(int index) {
-    if (index <= size && index >= 0) {
+    if (index < size && index >= 0) {
         node* tmp1 = head;
         node* tmp2;
         for(int i = 1; i < index - 1; i++) {
