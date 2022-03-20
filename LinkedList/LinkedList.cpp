@@ -63,7 +63,7 @@ template <typename T> typename LinkedList<T>::node* LinkedList<T>::getNode(int i
         return tmp;
     }
 }
-template <typename T> void LinkedList<T>::setNode(int index, typename LinkedList<T>::node* node) const {
+template <typename T> void LinkedList<T>::setNode(int index, typename LinkedList<T>::node* node) {
     if (index >= 0 && index < size) {
         node* tmp = head;
         for (int i = 1; i < index; i++) {
