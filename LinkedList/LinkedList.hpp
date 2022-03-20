@@ -17,7 +17,7 @@ template <typename T> class LinkedList {
                 void setNext(node*);
         };
         int size;
-        node* const head;
+        node* head;
     public:
         LinkedList();
         LinkedList(int);
@@ -27,8 +27,11 @@ template <typename T> class LinkedList {
         int getSize() const;
         virtual void setSize(int);
         node* getHead() const;
+        virtual node* getNode(int) const;
+        virtual void setNode(int, node*);
         virtual void addNodeToLast(T);
         virtual void addNodeAt(int, T);
         virtual void deleteNodefromLast();
         virtual void deleteNodeAt(int);
+        virtual void swapNodes(int, int);
 };

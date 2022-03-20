@@ -54,6 +54,24 @@ template <typename T> void LinkedList<T>::setSize(int size) {
     }
 }
 template <typename T> typename LinkedList<T>::node* LinkedList<T>::getHead() const { return head; }
+template <typename T> typename LinkedList<T>::node* LinkedList<T>::getNode(int index) const {
+    if (index >= 0 && index < size) {
+        node* tmp = head;
+        for (int i = 1; i < index; i++) {
+            tmp = tmp->getNext();
+        }
+        return tmp;
+    }
+}
+template <typename T> void LinkedList<T>::setNode(int index, typename LinkedList<T>::node* node) const {
+    if (index >= 0 && index < size) {
+        node* tmp = head;
+        for (int i = 1; i < index; i++) {
+            tmp = tmp->getNext();
+        }
+        tmp = node;
+    }
+}
 template <typename T> void LinkedList<T>::addNodeToLast(T payload) {
     node * tmp = head;
     for(int i = 1; i < size; i++) { tmp = tmp->getNext(); }
@@ -82,9 +100,26 @@ template <typename T> void LinkedList<T>::deleteNodeAt(int index) {
         node* tmp1 = head;
         node* tmp2;
         for(int i = 1; i < index - 1; i++) { tmp1 = tmp1->getNext(); }
-        tmp2 = tmp1->getNext()->getNext();
-        delete tmp1->getNext();
-        tmp1->setNext(tmp2);
+        tmp2 = tmp1->getNext();
+        tmp1->setNext(tmp2->getNext());
+        tmp2->setNext(0);
+        delete tmp2;
         size--;
+    }
+}
+template <typename T> void LinkedList<T>::swapNodes(int index1, int index2) {
+    if (index1 >= 0 && index2 > index1 && index1 < size && index2 < size) {
+        node* tmp1 = head;
+        node* tmp2;
+        node* tmp3;
+        node* tmp4;
+        for(int i = 1; i < index1 - 1; i++) { tmp1 = tmp1->getNext(); }
+        tmp2 = tmp1->getNext();
+        tmp3 = tmp2;
+        for(int i = index1 ; i < index2 - 1; i++) { tmp3 = tmp3->getNext(); }
+        tmp4 = tmp3->getNext()->getNext();
+        tmp1->setNext(tmp3->getNext());
+        tmp1->getNext()->setNext(tmp2->getNext());
+        tmp2->setNext(tmp4);
     }
 }
